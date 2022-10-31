@@ -94,6 +94,10 @@ export interface PaymentMethodMap {
   PPRO_SOFORT: 2;
   PPRO_IDEAL: 3;
   PPRO_BANCONTACT: 4;
+  EXPRESS_BANK: 5;
+  PPRO_EPS: 6;
+  PPRO_GIROPAY: 7;
+  KLARNA: 8;
 }
 
 export const PaymentMethod: PaymentMethodMap;

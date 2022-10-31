@@ -5,127 +5,8 @@
 
 import * as jspb from "google-protobuf";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
+import * as google_protobuf_wrappers_pb from "google-protobuf/google/protobuf/wrappers_pb";
 import * as relay_models_pb from "../../../relay/models_pb";
-import * as relay_onboarding_v1_paymentmethods_ppro_pb from "../../../relay/onboarding/v1/paymentmethods/ppro_pb";
-
-export class TryNested extends jspb.Message {
-  getSthg(): string;
-  setSthg(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): TryNested.AsObject;
-  static toObject(includeInstance: boolean, msg: TryNested): TryNested.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: TryNested, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): TryNested;
-  static deserializeBinaryFromReader(message: TryNested, reader: jspb.BinaryReader): TryNested;
-}
-
-export namespace TryNested {
-  export type AsObject = {
-    sthg: string,
-  }
-}
-
-export class ResNested extends jspb.Message {
-  getSthg(): string;
-  setSthg(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ResNested.AsObject;
-  static toObject(includeInstance: boolean, msg: ResNested): ResNested.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ResNested, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ResNested;
-  static deserializeBinaryFromReader(message: ResNested, reader: jspb.BinaryReader): ResNested;
-}
-
-export namespace ResNested {
-  export type AsObject = {
-    sthg: string,
-  }
-}
-
-export class CompletelyNew extends jspb.Message {
-  getDescription(): string;
-  setDescription(value: string): void;
-
-  hasTryNested(): boolean;
-  clearTryNested(): void;
-  getTryNested(): TryNested | undefined;
-  setTryNested(value?: TryNested): void;
-
-  hasInitreq(): boolean;
-  clearInitreq(): void;
-  getInitreq(): string;
-  setInitreq(value: string): void;
-
-  hasInitres(): boolean;
-  clearInitres(): void;
-  getInitres(): string;
-  setInitres(value: string): void;
-
-  hasPaymet(): boolean;
-  clearPaymet(): void;
-  getPaymet(): relay_onboarding_v1_paymentmethods_ppro_pb.BusinessDetails | undefined;
-  setPaymet(value?: relay_onboarding_v1_paymentmethods_ppro_pb.BusinessDetails): void;
-
-  hasPaymentMethod(): boolean;
-  clearPaymentMethod(): void;
-  getPaymentMethod(): relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap];
-  setPaymentMethod(value: relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap]): void;
-
-  getPaymentselectionCase(): CompletelyNew.PaymentselectionCase;
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): CompletelyNew.AsObject;
-  static toObject(includeInstance: boolean, msg: CompletelyNew): CompletelyNew.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: CompletelyNew, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): CompletelyNew;
-  static deserializeBinaryFromReader(message: CompletelyNew, reader: jspb.BinaryReader): CompletelyNew;
-}
-
-export namespace CompletelyNew {
-  export type AsObject = {
-    description: string,
-    tryNested?: TryNested.AsObject,
-    initreq: string,
-    initres: string,
-    paymet?: relay_onboarding_v1_paymentmethods_ppro_pb.BusinessDetails.AsObject,
-    paymentMethod: relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap],
-  }
-
-  export enum PaymentselectionCase {
-    PAYMENTSELECTION_NOT_SET = 0,
-    INITREQ = 3,
-    INITRES = 4,
-    PAYMET = 6,
-    PAYMENT_METHOD = 7,
-  }
-}
-
-export class NewIndeed extends jspb.Message {
-  getDescription(): string;
-  setDescription(value: string): void;
-
-  serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): NewIndeed.AsObject;
-  static toObject(includeInstance: boolean, msg: NewIndeed): NewIndeed.AsObject;
-  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: NewIndeed, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): NewIndeed;
-  static deserializeBinaryFromReader(message: NewIndeed, reader: jspb.BinaryReader): NewIndeed;
-}
-
-export namespace NewIndeed {
-  export type AsObject = {
-    description: string,
-  }
-}
 
 export class InitializeRequest extends jspb.Message {
   getReference(): string;
@@ -158,8 +39,10 @@ export namespace InitializeRequest {
 }
 
 export class InitializeResponse extends jspb.Message {
-  getPaymentMethodConfigurationId(): string;
-  setPaymentMethodConfigurationId(value: string): void;
+  hasPaymentMethodConfigurationId(): boolean;
+  clearPaymentMethodConfigurationId(): void;
+  getPaymentMethodConfigurationId(): google_protobuf_wrappers_pb.StringValue | undefined;
+  setPaymentMethodConfigurationId(value?: google_protobuf_wrappers_pb.StringValue): void;
 
   hasData(): boolean;
   clearData(): void;
@@ -183,7 +66,7 @@ export class InitializeResponse extends jspb.Message {
 
 export namespace InitializeResponse {
   export type AsObject = {
-    paymentMethodConfigurationId: string,
+    paymentMethodConfigurationId?: google_protobuf_wrappers_pb.StringValue.AsObject,
     data?: google_protobuf_any_pb.Any.AsObject,
     status?: relay_models_pb.Status.AsObject,
   }

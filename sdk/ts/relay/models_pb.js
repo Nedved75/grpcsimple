@@ -664,7 +664,11 @@ proto.relay.PaymentMethod = {
   PPRO_TRUSTLY: 1,
   PPRO_SOFORT: 2,
   PPRO_IDEAL: 3,
-  PPRO_BANCONTACT: 4
+  PPRO_BANCONTACT: 4,
+  EXPRESS_BANK: 5,
+  PPRO_EPS: 6,
+  PPRO_GIROPAY: 7,
+  KLARNA: 8
 };
 
 goog.object.extend(exports, proto.relay);

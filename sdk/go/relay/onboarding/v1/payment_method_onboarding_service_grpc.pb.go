@@ -21,8 +21,6 @@ type PaymentMethodOnboardingClient interface {
 	Initialize(ctx context.Context, in *InitializeRequest, opts ...grpc.CallOption) (*InitializeResponse, error)
 	Update(ctx context.Context, in *UpdateRequest, opts ...grpc.CallOption) (*UpdateResponse, error)
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
-	New(ctx context.Context, in *CompletelyNew, opts ...grpc.CallOption) (*NewIndeed, error)
-	Nested(ctx context.Context, in *TryNested, opts ...grpc.CallOption) (*ResNested, error)
 }
 
 type paymentMethodOnboardingClient struct {
@@ -60,24 +58,6 @@ func (c *paymentMethodOnboardingClient) Get(ctx context.Context, in *GetRequest,
 	return out, nil
 }
 
-func (c *paymentMethodOnboardingClient) New(ctx context.Context, in *CompletelyNew, opts ...grpc.CallOption) (*NewIndeed, error) {
-	out := new(NewIndeed)
-	err := c.cc.Invoke(ctx, "/relay.onboarding.v1.PaymentMethodOnboarding/New", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *paymentMethodOnboardingClient) Nested(ctx context.Context, in *TryNested, opts ...grpc.CallOption) (*ResNested, error) {
-	out := new(ResNested)
-	err := c.cc.Invoke(ctx, "/relay.onboarding.v1.PaymentMethodOnboarding/Nested", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // PaymentMethodOnboardingServer is the server API for PaymentMethodOnboarding service.
 // All implementations must embed UnimplementedPaymentMethodOnboardingServer
 // for forward compatibility
@@ -85,8 +65,6 @@ type PaymentMethodOnboardingServer interface {
 	Initialize(context.Context, *InitializeRequest) (*InitializeResponse, error)
 	Update(context.Context, *UpdateRequest) (*UpdateResponse, error)
 	Get(context.Context, *GetRequest) (*GetResponse, error)
-	New(context.Context, *CompletelyNew) (*NewIndeed, error)
-	Nested(context.Context, *TryNested) (*ResNested, error)
 	mustEmbedUnimplementedPaymentMethodOnboardingServer()
 }
 
@@ -102,12 +80,6 @@ func (UnimplementedPaymentMethodOnboardingServer) Update(context.Context, *Updat
 }
 func (UnimplementedPaymentMethodOnboardingServer) Get(context.Context, *GetRequest) (*GetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
-}
-func (UnimplementedPaymentMethodOnboardingServer) New(context.Context, *CompletelyNew) (*NewIndeed, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method New not implemented")
-}
-func (UnimplementedPaymentMethodOnboardingServer) Nested(context.Context, *TryNested) (*ResNested, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Nested not implemented")
 }
 func (UnimplementedPaymentMethodOnboardingServer) mustEmbedUnimplementedPaymentMethodOnboardingServer() {
 }
@@ -177,42 +149,6 @@ func _PaymentMethodOnboarding_Get_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _PaymentMethodOnboarding_New_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CompletelyNew)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PaymentMethodOnboardingServer).New(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/relay.onboarding.v1.PaymentMethodOnboarding/New",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentMethodOnboardingServer).New(ctx, req.(*CompletelyNew))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _PaymentMethodOnboarding_Nested_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TryNested)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PaymentMethodOnboardingServer).Nested(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/relay.onboarding.v1.PaymentMethodOnboarding/Nested",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PaymentMethodOnboardingServer).Nested(ctx, req.(*TryNested))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // PaymentMethodOnboarding_ServiceDesc is the grpc.ServiceDesc for PaymentMethodOnboarding service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -231,14 +167,6 @@ var PaymentMethodOnboarding_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Get",
 			Handler:    _PaymentMethodOnboarding_Get_Handler,
-		},
-		{
-			MethodName: "New",
-			Handler:    _PaymentMethodOnboarding_New_Handler,
-		},
-		{
-			MethodName: "Nested",
-			Handler:    _PaymentMethodOnboarding_Nested_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
