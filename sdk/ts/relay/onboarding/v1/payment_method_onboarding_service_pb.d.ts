@@ -102,11 +102,22 @@ export class UpdateRequest extends jspb.Message {
   getPaymentMethod(): relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap];
   setPaymentMethod(value: relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap]): void;
 
-  hasData(): boolean;
-  clearData(): void;
-  getData(): google_protobuf_any_pb.Any | undefined;
-  setData(value?: google_protobuf_any_pb.Any): void;
+  hasUpdaterequestppro(): boolean;
+  clearUpdaterequestppro(): void;
+  getUpdaterequestppro(): relay_onboarding_v1_paymentmethods_ppro_pb.UpdateRequestData | undefined;
+  setUpdaterequestppro(value?: relay_onboarding_v1_paymentmethods_ppro_pb.UpdateRequestData): void;
 
+  hasUpdaterequestexpressbank(): boolean;
+  clearUpdaterequestexpressbank(): void;
+  getUpdaterequestexpressbank(): relay_onboarding_v1_paymentmethods_expressbank_pb.UpdateRequestData | undefined;
+  setUpdaterequestexpressbank(value?: relay_onboarding_v1_paymentmethods_expressbank_pb.UpdateRequestData): void;
+
+  hasUpdaterequestklarna(): boolean;
+  clearUpdaterequestklarna(): void;
+  getUpdaterequestklarna(): relay_onboarding_v1_paymentmethods_klarna_pb.UpdateRequestData | undefined;
+  setUpdaterequestklarna(value?: relay_onboarding_v1_paymentmethods_klarna_pb.UpdateRequestData): void;
+
+  getDataCase(): UpdateRequest.DataCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): UpdateRequest.AsObject;
   static toObject(includeInstance: boolean, msg: UpdateRequest): UpdateRequest.AsObject;
@@ -121,7 +132,16 @@ export namespace UpdateRequest {
   export type AsObject = {
     paymentMethodConfigurationId: string,
     paymentMethod: relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap],
-    data?: google_protobuf_any_pb.Any.AsObject,
+    updaterequestppro?: relay_onboarding_v1_paymentmethods_ppro_pb.UpdateRequestData.AsObject,
+    updaterequestexpressbank?: relay_onboarding_v1_paymentmethods_expressbank_pb.UpdateRequestData.AsObject,
+    updaterequestklarna?: relay_onboarding_v1_paymentmethods_klarna_pb.UpdateRequestData.AsObject,
+  }
+
+  export enum DataCase {
+    DATA_NOT_SET = 0,
+    UPDATEREQUESTPPRO = 3,
+    UPDATEREQUESTEXPRESSBANK = 4,
+    UPDATEREQUESTKLARNA = 5,
   }
 }
 
