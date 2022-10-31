@@ -7,6 +7,9 @@ import * as jspb from "google-protobuf";
 import * as google_protobuf_any_pb from "google-protobuf/google/protobuf/any_pb";
 import * as google_protobuf_wrappers_pb from "google-protobuf/google/protobuf/wrappers_pb";
 import * as relay_models_pb from "../../../relay/models_pb";
+import * as relay_onboarding_v1_paymentmethods_expressbank_pb from "../../../relay/onboarding/v1/paymentmethods/expressbank_pb";
+import * as relay_onboarding_v1_paymentmethods_klarna_pb from "../../../relay/onboarding/v1/paymentmethods/klarna_pb";
+import * as relay_onboarding_v1_paymentmethods_ppro_pb from "../../../relay/onboarding/v1/paymentmethods/ppro_pb";
 
 export class InitializeRequest extends jspb.Message {
   getReference(): string;
@@ -20,6 +23,22 @@ export class InitializeRequest extends jspb.Message {
   getData(): google_protobuf_any_pb.Any | undefined;
   setData(value?: google_protobuf_any_pb.Any): void;
 
+  hasPaymentmethoddatappro(): boolean;
+  clearPaymentmethoddatappro(): void;
+  getPaymentmethoddatappro(): relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData | undefined;
+  setPaymentmethoddatappro(value?: relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData): void;
+
+  hasPaymentmethoddataexpressbank(): boolean;
+  clearPaymentmethoddataexpressbank(): void;
+  getPaymentmethoddataexpressbank(): relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData | undefined;
+  setPaymentmethoddataexpressbank(value?: relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData): void;
+
+  hasPaymentmethoddataklarna(): boolean;
+  clearPaymentmethoddataklarna(): void;
+  getPaymentmethoddataklarna(): relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData | undefined;
+  setPaymentmethoddataklarna(value?: relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData): void;
+
+  getPaymentselectionCase(): InitializeRequest.PaymentselectionCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): InitializeRequest.AsObject;
   static toObject(includeInstance: boolean, msg: InitializeRequest): InitializeRequest.AsObject;
@@ -35,6 +54,16 @@ export namespace InitializeRequest {
     reference: string,
     paymentMethod: relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap],
     data?: google_protobuf_any_pb.Any.AsObject,
+    paymentmethoddatappro?: relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData.AsObject,
+    paymentmethoddataexpressbank?: relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData.AsObject,
+    paymentmethoddataklarna?: relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData.AsObject,
+  }
+
+  export enum PaymentselectionCase {
+    PAYMENTSELECTION_NOT_SET = 0,
+    PAYMENTMETHODDATAPPRO = 3,
+    PAYMENTMETHODDATAEXPRESSBANK = 4,
+    PAYMENTMETHODDATAKLARNA = 5,
   }
 }
 
