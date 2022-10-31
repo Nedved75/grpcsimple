@@ -18,27 +18,22 @@ export class InitializeRequest extends jspb.Message {
   getPaymentMethod(): relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap];
   setPaymentMethod(value: relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap]): void;
 
-  hasData(): boolean;
-  clearData(): void;
-  getData(): google_protobuf_any_pb.Any | undefined;
-  setData(value?: google_protobuf_any_pb.Any): void;
+  hasInitializerequestppro(): boolean;
+  clearInitializerequestppro(): void;
+  getInitializerequestppro(): relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData | undefined;
+  setInitializerequestppro(value?: relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData): void;
 
-  hasPaymentmethoddatappro(): boolean;
-  clearPaymentmethoddatappro(): void;
-  getPaymentmethoddatappro(): relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData | undefined;
-  setPaymentmethoddatappro(value?: relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData): void;
+  hasInitializerequestexpressbank(): boolean;
+  clearInitializerequestexpressbank(): void;
+  getInitializerequestexpressbank(): relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData | undefined;
+  setInitializerequestexpressbank(value?: relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData): void;
 
-  hasPaymentmethoddataexpressbank(): boolean;
-  clearPaymentmethoddataexpressbank(): void;
-  getPaymentmethoddataexpressbank(): relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData | undefined;
-  setPaymentmethoddataexpressbank(value?: relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData): void;
+  hasInitializerequestklarna(): boolean;
+  clearInitializerequestklarna(): void;
+  getInitializerequestklarna(): relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData | undefined;
+  setInitializerequestklarna(value?: relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData): void;
 
-  hasPaymentmethoddataklarna(): boolean;
-  clearPaymentmethoddataklarna(): void;
-  getPaymentmethoddataklarna(): relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData | undefined;
-  setPaymentmethoddataklarna(value?: relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData): void;
-
-  getPaymentselectionCase(): InitializeRequest.PaymentselectionCase;
+  getDataCase(): InitializeRequest.DataCase;
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): InitializeRequest.AsObject;
   static toObject(includeInstance: boolean, msg: InitializeRequest): InitializeRequest.AsObject;
@@ -53,17 +48,16 @@ export namespace InitializeRequest {
   export type AsObject = {
     reference: string,
     paymentMethod: relay_models_pb.PaymentMethodMap[keyof relay_models_pb.PaymentMethodMap],
-    data?: google_protobuf_any_pb.Any.AsObject,
-    paymentmethoddatappro?: relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData.AsObject,
-    paymentmethoddataexpressbank?: relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData.AsObject,
-    paymentmethoddataklarna?: relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData.AsObject,
+    initializerequestppro?: relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData.AsObject,
+    initializerequestexpressbank?: relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData.AsObject,
+    initializerequestklarna?: relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData.AsObject,
   }
 
-  export enum PaymentselectionCase {
-    PAYMENTSELECTION_NOT_SET = 0,
-    PAYMENTMETHODDATAPPRO = 3,
-    PAYMENTMETHODDATAEXPRESSBANK = 4,
-    PAYMENTMETHODDATAKLARNA = 5,
+  export enum DataCase {
+    DATA_NOT_SET = 0,
+    INITIALIZEREQUESTPPRO = 3,
+    INITIALIZEREQUESTEXPRESSBANK = 4,
+    INITIALIZEREQUESTKLARNA = 5,
   }
 }
 

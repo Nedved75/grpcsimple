@@ -32,7 +32,7 @@ goog.object.extend(proto, relay_onboarding_v1_paymentmethods_ppro_pb);
 goog.exportSymbol('proto.relay.onboarding.v1.GetRequest', null, global);
 goog.exportSymbol('proto.relay.onboarding.v1.GetResponse', null, global);
 goog.exportSymbol('proto.relay.onboarding.v1.InitializeRequest', null, global);
-goog.exportSymbol('proto.relay.onboarding.v1.InitializeRequest.PaymentselectionCase', null, global);
+goog.exportSymbol('proto.relay.onboarding.v1.InitializeRequest.DataCase', null, global);
 goog.exportSymbol('proto.relay.onboarding.v1.InitializeResponse', null, global);
 goog.exportSymbol('proto.relay.onboarding.v1.PaymentMethodOnboardingStatus', null, global);
 goog.exportSymbol('proto.relay.onboarding.v1.UpdateRequest', null, global);
@@ -177,18 +177,18 @@ proto.relay.onboarding.v1.InitializeRequest.oneofGroups_ = [[3,4,5]];
 /**
  * @enum {number}
  */
-proto.relay.onboarding.v1.InitializeRequest.PaymentselectionCase = {
-  PAYMENTSELECTION_NOT_SET: 0,
-  PAYMENTMETHODDATAPPRO: 3,
-  PAYMENTMETHODDATAEXPRESSBANK: 4,
-  PAYMENTMETHODDATAKLARNA: 5
+proto.relay.onboarding.v1.InitializeRequest.DataCase = {
+  DATA_NOT_SET: 0,
+  INITIALIZEREQUESTPPRO: 3,
+  INITIALIZEREQUESTEXPRESSBANK: 4,
+  INITIALIZEREQUESTKLARNA: 5
 };
 
 /**
- * @return {proto.relay.onboarding.v1.InitializeRequest.PaymentselectionCase}
+ * @return {proto.relay.onboarding.v1.InitializeRequest.DataCase}
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.getPaymentselectionCase = function() {
-  return /** @type {proto.relay.onboarding.v1.InitializeRequest.PaymentselectionCase} */(jspb.Message.computeOneofCase(this, proto.relay.onboarding.v1.InitializeRequest.oneofGroups_[0]));
+proto.relay.onboarding.v1.InitializeRequest.prototype.getDataCase = function() {
+  return /** @type {proto.relay.onboarding.v1.InitializeRequest.DataCase} */(jspb.Message.computeOneofCase(this, proto.relay.onboarding.v1.InitializeRequest.oneofGroups_[0]));
 };
 
 
@@ -224,10 +224,9 @@ proto.relay.onboarding.v1.InitializeRequest.toObject = function(includeInstance,
   var f, obj = {
     reference: jspb.Message.getFieldWithDefault(msg, 1, ""),
     paymentMethod: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    data: (f = msg.getData()) && google_protobuf_any_pb.Any.toObject(includeInstance, f),
-    paymentmethoddatappro: (f = msg.getPaymentmethoddatappro()) && relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData.toObject(includeInstance, f),
-    paymentmethoddataexpressbank: (f = msg.getPaymentmethoddataexpressbank()) && relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData.toObject(includeInstance, f),
-    paymentmethoddataklarna: (f = msg.getPaymentmethoddataklarna()) && relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData.toObject(includeInstance, f)
+    initializerequestppro: (f = msg.getInitializerequestppro()) && relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData.toObject(includeInstance, f),
+    initializerequestexpressbank: (f = msg.getInitializerequestexpressbank()) && relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData.toObject(includeInstance, f),
+    initializerequestklarna: (f = msg.getInitializerequestklarna()) && relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -272,25 +271,20 @@ proto.relay.onboarding.v1.InitializeRequest.deserializeBinaryFromReader = functi
       var value = /** @type {!proto.relay.PaymentMethod} */ (reader.readEnum());
       msg.setPaymentMethod(value);
       break;
-    case 100:
-      var value = new google_protobuf_any_pb.Any;
-      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-      msg.setData(value);
-      break;
     case 3:
       var value = new relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData;
       reader.readMessage(value,relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData.deserializeBinaryFromReader);
-      msg.setPaymentmethoddatappro(value);
+      msg.setInitializerequestppro(value);
       break;
     case 4:
       var value = new relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData;
       reader.readMessage(value,relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData.deserializeBinaryFromReader);
-      msg.setPaymentmethoddataexpressbank(value);
+      msg.setInitializerequestexpressbank(value);
       break;
     case 5:
       var value = new relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData;
       reader.readMessage(value,relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData.deserializeBinaryFromReader);
-      msg.setPaymentmethoddataklarna(value);
+      msg.setInitializerequestklarna(value);
       break;
     default:
       reader.skipField();
@@ -335,15 +329,7 @@ proto.relay.onboarding.v1.InitializeRequest.serializeBinaryToWriter = function(m
       f
     );
   }
-  f = message.getData();
-  if (f != null) {
-    writer.writeMessage(
-      100,
-      f,
-      google_protobuf_any_pb.Any.serializeBinaryToWriter
-    );
-  }
-  f = message.getPaymentmethoddatappro();
+  f = message.getInitializerequestppro();
   if (f != null) {
     writer.writeMessage(
       3,
@@ -351,7 +337,7 @@ proto.relay.onboarding.v1.InitializeRequest.serializeBinaryToWriter = function(m
       relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData.serializeBinaryToWriter
     );
   }
-  f = message.getPaymentmethoddataexpressbank();
+  f = message.getInitializerequestexpressbank();
   if (f != null) {
     writer.writeMessage(
       4,
@@ -359,7 +345,7 @@ proto.relay.onboarding.v1.InitializeRequest.serializeBinaryToWriter = function(m
       relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData.serializeBinaryToWriter
     );
   }
-  f = message.getPaymentmethoddataklarna();
+  f = message.getInitializerequestklarna();
   if (f != null) {
     writer.writeMessage(
       5,
@@ -407,47 +393,10 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.setPaymentMethod = functio
 
 
 /**
- * optional google.protobuf.Any data = 100;
- * @return {?proto.google.protobuf.Any}
- */
-proto.relay.onboarding.v1.InitializeRequest.prototype.getData = function() {
-  return /** @type{?proto.google.protobuf.Any} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 100));
-};
-
-
-/**
- * @param {?proto.google.protobuf.Any|undefined} value
- * @return {!proto.relay.onboarding.v1.InitializeRequest} returns this
-*/
-proto.relay.onboarding.v1.InitializeRequest.prototype.setData = function(value) {
-  return jspb.Message.setWrapperField(this, 100, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.relay.onboarding.v1.InitializeRequest} returns this
- */
-proto.relay.onboarding.v1.InitializeRequest.prototype.clearData = function() {
-  return this.setData(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.relay.onboarding.v1.InitializeRequest.prototype.hasData = function() {
-  return jspb.Message.getField(this, 100) != null;
-};
-
-
-/**
- * optional paymentmethods.ppro.InitializeRequestData PaymentMethodDataPPRO = 3;
+ * optional paymentmethods.ppro.InitializeRequestData InitializeRequestPPRO = 3;
  * @return {?proto.relay.onboarding.v1.paymentmethods.ppro.InitializeRequestData}
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.getPaymentmethoddatappro = function() {
+proto.relay.onboarding.v1.InitializeRequest.prototype.getInitializerequestppro = function() {
   return /** @type{?proto.relay.onboarding.v1.paymentmethods.ppro.InitializeRequestData} */ (
     jspb.Message.getWrapperField(this, relay_onboarding_v1_paymentmethods_ppro_pb.InitializeRequestData, 3));
 };
@@ -457,7 +406,7 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.getPaymentmethoddatappro =
  * @param {?proto.relay.onboarding.v1.paymentmethods.ppro.InitializeRequestData|undefined} value
  * @return {!proto.relay.onboarding.v1.InitializeRequest} returns this
 */
-proto.relay.onboarding.v1.InitializeRequest.prototype.setPaymentmethoddatappro = function(value) {
+proto.relay.onboarding.v1.InitializeRequest.prototype.setInitializerequestppro = function(value) {
   return jspb.Message.setOneofWrapperField(this, 3, proto.relay.onboarding.v1.InitializeRequest.oneofGroups_[0], value);
 };
 
@@ -466,8 +415,8 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.setPaymentmethoddatappro =
  * Clears the message field making it undefined.
  * @return {!proto.relay.onboarding.v1.InitializeRequest} returns this
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.clearPaymentmethoddatappro = function() {
-  return this.setPaymentmethoddatappro(undefined);
+proto.relay.onboarding.v1.InitializeRequest.prototype.clearInitializerequestppro = function() {
+  return this.setInitializerequestppro(undefined);
 };
 
 
@@ -475,16 +424,16 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.clearPaymentmethoddatappro
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.hasPaymentmethoddatappro = function() {
+proto.relay.onboarding.v1.InitializeRequest.prototype.hasInitializerequestppro = function() {
   return jspb.Message.getField(this, 3) != null;
 };
 
 
 /**
- * optional paymentmethods.expressbank.InitializeRequestData PaymentMethodDataExpressBank = 4;
+ * optional paymentmethods.expressbank.InitializeRequestData InitializeRequestExpressBank = 4;
  * @return {?proto.relay.onboarding.v1.paymentmethods.expressbank.InitializeRequestData}
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.getPaymentmethoddataexpressbank = function() {
+proto.relay.onboarding.v1.InitializeRequest.prototype.getInitializerequestexpressbank = function() {
   return /** @type{?proto.relay.onboarding.v1.paymentmethods.expressbank.InitializeRequestData} */ (
     jspb.Message.getWrapperField(this, relay_onboarding_v1_paymentmethods_expressbank_pb.InitializeRequestData, 4));
 };
@@ -494,7 +443,7 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.getPaymentmethoddataexpres
  * @param {?proto.relay.onboarding.v1.paymentmethods.expressbank.InitializeRequestData|undefined} value
  * @return {!proto.relay.onboarding.v1.InitializeRequest} returns this
 */
-proto.relay.onboarding.v1.InitializeRequest.prototype.setPaymentmethoddataexpressbank = function(value) {
+proto.relay.onboarding.v1.InitializeRequest.prototype.setInitializerequestexpressbank = function(value) {
   return jspb.Message.setOneofWrapperField(this, 4, proto.relay.onboarding.v1.InitializeRequest.oneofGroups_[0], value);
 };
 
@@ -503,8 +452,8 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.setPaymentmethoddataexpres
  * Clears the message field making it undefined.
  * @return {!proto.relay.onboarding.v1.InitializeRequest} returns this
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.clearPaymentmethoddataexpressbank = function() {
-  return this.setPaymentmethoddataexpressbank(undefined);
+proto.relay.onboarding.v1.InitializeRequest.prototype.clearInitializerequestexpressbank = function() {
+  return this.setInitializerequestexpressbank(undefined);
 };
 
 
@@ -512,16 +461,16 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.clearPaymentmethoddataexpr
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.hasPaymentmethoddataexpressbank = function() {
+proto.relay.onboarding.v1.InitializeRequest.prototype.hasInitializerequestexpressbank = function() {
   return jspb.Message.getField(this, 4) != null;
 };
 
 
 /**
- * optional paymentmethods.klarna.InitializeRequestData PaymentMethodDataKlarna = 5;
+ * optional paymentmethods.klarna.InitializeRequestData InitializeRequestKlarna = 5;
  * @return {?proto.relay.onboarding.v1.paymentmethods.klarna.InitializeRequestData}
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.getPaymentmethoddataklarna = function() {
+proto.relay.onboarding.v1.InitializeRequest.prototype.getInitializerequestklarna = function() {
   return /** @type{?proto.relay.onboarding.v1.paymentmethods.klarna.InitializeRequestData} */ (
     jspb.Message.getWrapperField(this, relay_onboarding_v1_paymentmethods_klarna_pb.InitializeRequestData, 5));
 };
@@ -531,7 +480,7 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.getPaymentmethoddataklarna
  * @param {?proto.relay.onboarding.v1.paymentmethods.klarna.InitializeRequestData|undefined} value
  * @return {!proto.relay.onboarding.v1.InitializeRequest} returns this
 */
-proto.relay.onboarding.v1.InitializeRequest.prototype.setPaymentmethoddataklarna = function(value) {
+proto.relay.onboarding.v1.InitializeRequest.prototype.setInitializerequestklarna = function(value) {
   return jspb.Message.setOneofWrapperField(this, 5, proto.relay.onboarding.v1.InitializeRequest.oneofGroups_[0], value);
 };
 
@@ -540,8 +489,8 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.setPaymentmethoddataklarna
  * Clears the message field making it undefined.
  * @return {!proto.relay.onboarding.v1.InitializeRequest} returns this
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.clearPaymentmethoddataklarna = function() {
-  return this.setPaymentmethoddataklarna(undefined);
+proto.relay.onboarding.v1.InitializeRequest.prototype.clearInitializerequestklarna = function() {
+  return this.setInitializerequestklarna(undefined);
 };
 
 
@@ -549,7 +498,7 @@ proto.relay.onboarding.v1.InitializeRequest.prototype.clearPaymentmethoddataklar
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.relay.onboarding.v1.InitializeRequest.prototype.hasPaymentmethoddataklarna = function() {
+proto.relay.onboarding.v1.InitializeRequest.prototype.hasInitializerequestklarna = function() {
   return jspb.Message.getField(this, 5) != null;
 };
 
