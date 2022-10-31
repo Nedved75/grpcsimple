@@ -23,14 +23,18 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// this returns the notification_configuration_id as a reference for future requests
 type CreateWebhookConfigurationRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RequestId string   `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
-	Events    []string `protobuf:"bytes,2,rep,name=events,proto3" json:"events,omitempty"`
-	Url       string   `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
+	// id for your internal reference - defined by you
+	RequestId string `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	// the events you want to listen to - find a list of all possible events here
+	Events []string `protobuf:"bytes,2,rep,name=events,proto3" json:"events,omitempty"`
+	// the webhook URL - defined by you
+	Url string `protobuf:"bytes,3,opt,name=url,proto3" json:"url,omitempty"`
 }
 
 func (x *CreateWebhookConfigurationRequest) Reset() {
@@ -146,6 +150,7 @@ type GetConfigurationRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// the notification_configuration_id has been sent with the CreateWebhookConfigurationResponse
 	NotificationConfigurationId string `protobuf:"bytes,1,opt,name=notification_configuration_id,json=notificationConfigurationId,proto3" json:"notification_configuration_id,omitempty"`
 }
 
@@ -194,7 +199,7 @@ type GetConfigurationResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	Events []string `protobuf:"bytes,1,rep,name=events,proto3" json:"events,omitempty"`
-	// Channel specific information.
+	// Channel specific information. Shows which channel you use (eg webhook, ...)
 	Data   *anypb.Any    `protobuf:"bytes,100,opt,name=data,proto3" json:"data,omitempty"`
 	Status *relay.Status `protobuf:"bytes,101,opt,name=status,proto3" json:"status,omitempty"`
 }
@@ -257,6 +262,7 @@ type DeleteConfigurationRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
+	// the notification_configuration_id has been sent with the CreateWebhookConfigurationResponse
 	NotificationConfigurationId string `protobuf:"bytes,1,opt,name=notification_configuration_id,json=notificationConfigurationId,proto3" json:"notification_configuration_id,omitempty"`
 }
 
